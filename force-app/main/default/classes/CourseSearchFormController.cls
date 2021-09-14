@@ -1,3 +1,12 @@
+/*********************************************************
+ * @ Course Search controller, build for CourseSearchForm 
+ * component, functions added for get course level and 
+ * course position for Aura cmp
+ * 
+ * @ created Sep 12, 2021, Rui
+ * 
+ **************/
+
 public with sharing class CourseSearchFormController {
     public CourseSearchFormController() {
 

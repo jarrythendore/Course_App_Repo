@@ -1,7 +1,7 @@
 <aura:component implements="force:appHostable,flexipage:availableForAllPageTypes">
 
     <aura:handler name="formsubmit" event="c:FormSubmit" action="{!c.onFormSubmit}" phase="capture" />
-
+    <!-- this the parent component includes two child component, CourseSearchForm and Course Search Result -->
     <lightning:card title="Find a Course">
         <c:CourseSearchForm />
     </lightning:card>
