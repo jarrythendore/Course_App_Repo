@@ -1,18 +1,21 @@
-# Salesforce DX Project: Next Steps
+Course_App_Repo
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+1. Login one Salesforce Dev Hub Org then spin a Scratch Org for develop environment
 
-## How Do You Plan to Deploy Your Changes?
+    sfdx force:org:create -s -f config/project-scratch-def.json -a ticket# -d 30
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+2. Create SFDX Project in VSCode
 
-## Configure Your Salesforce DX Project
+    sfdx force:project:create --projectname MyLWC
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+3. Fetch all metadata From Scratch org
 
-## Read All About It
+    sfdx force:mdapi:retrieve -r metadata -u my_org_username -k ./manifest/package.xml
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+4. development
+
+5. run test and Deploy
+
+    sfdx force:source:deploy -p "./PathToMetadata" -l RunSpecifiedTests -r TestClass1,TestClass2 -w 33 --verbose --loglevel fatal
+
+
