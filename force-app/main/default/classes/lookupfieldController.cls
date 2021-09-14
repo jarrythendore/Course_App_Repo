@@ -1,3 +1,12 @@
+/*********************************************************
+ * @ dynamical lookup component, added for custom / standard
+ * sobject to lookup the parent record (lookup & master-detail)
+ * 
+ * @ only used in NewCourse Component.
+ * 
+ * @created Sep 12, 2021, Rui
+ * 
+ *******************/
 public with Sharing class lookupfieldController {    
     @AuraEnabled
     public static List<sObject> GetRecentRecords(String ObjectName, List<String> ReturnFields, Integer MaxResults) {
