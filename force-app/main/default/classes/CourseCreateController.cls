@@ -1,3 +1,11 @@
+/**********************************************************
+ * @the apex controller is for NewCourse component,
+ * utility function added like build picklist for input field
+ * 
+ * @ created Sep 12, 2021, Rui Qian
+ * 
+ * 
+ */
 public with sharing class CourseCreateController {
     public CourseCreateController() {
 
