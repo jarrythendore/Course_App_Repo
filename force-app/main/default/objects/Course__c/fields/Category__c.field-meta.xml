@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Category__c</fullName>
+    <externalId>false</externalId>
+    <label>Category</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>SurperBadge</fullName>
+                <default>false</default>
+                <label>SurperBadge</label>
+            </value>
+            <value>
+                <fullName>Apex Specialist</fullName>
+                <default>false</default>
+                <label>Apex Specialist</label>
+            </value>
+            <value>
+                <fullName>Lightning Specialist</fullName>
+                <default>false</default>
+                <label>Lightning Specialist</label>
+            </value>
+            <value>
+                <fullName>Aura Specialist</fullName>
+                <default>false</default>
+                <label>Aura Specialist</label>
+            </value>
+            <value>
+                <fullName>Admin Specialist</fullName>
+                <default>false</default>
+                <label>Admin Specialist</label>
+            </value>
+            <value>
+                <fullName>Pordot Specialist</fullName>
+                <default>false</default>
+                <label>Pordot Specialist</label>
+            </value>
+            <value>
+                <fullName>Data Loader Specialist</fullName>
+                <default>false</default>
+                <label>Data Loader Specialist</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

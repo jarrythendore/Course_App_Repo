@@ -25,6 +25,12 @@
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<types>
+		<members>CourseLevel__c</members>
+		<members>CoursePosition__c</members>
+		<members>Course__c</members>
+		<name>CustomObject</name>
+	</types>
+	<types>
 		<members>*</members>
 		<name>LightningComponentBundle</name>
 	</types>
