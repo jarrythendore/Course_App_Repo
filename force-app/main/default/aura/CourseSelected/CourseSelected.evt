@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION" description="Event template">
+<!-- 	we can pass the sobject in event attribute  -->
+<aura:attribute name="courseId" type="Course__c" />
+</aura:event>

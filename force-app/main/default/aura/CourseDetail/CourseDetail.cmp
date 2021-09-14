@@ -1,0 +1,90 @@
+<aura:component
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+    access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="course" type="Course__c" />
+    <aura:attribute name="showButton" type="Boolean" default="false" />
+
+    <lightning:card iconName="utility:down">
+        <aura:set attribute="title">
+            Course Owner {!v.course.Contact__r.Name}
+        </aura:set>
+
+        <aura:set attribute="actions">
+            <aura:if isTrue='{!v.showButton}'>
+                <lightning:button label="Navigate to Course" onclick="{!c.navigateToCourse}" />
+            </aura:if>
+        </aura:set>
+
+        <p class="slds-p-horizontal_small">
+            <lightning:layout>
+                <lightning:layoutItem flexibility="grow" size="6" mediumDeviceSize="6" largeDeviceSize="6">
+                    <div class="slds-var-p-vertical_medium">
+
+                        <div class="slds-var-p-vertical_medium">
+                            <span class="label">Course Name:</span>
+                            <span>
+                                <ui:outputText value="{!v.course.Name}" />
+                            </span>
+                        </div>
+
+                        <div class="slds-var-p-vertical_medium">
+                            <span class="label">Course Level:</span>
+                            <span>
+                                <ui:outputText value="{!v.course.CourseLevel__r.Name}" />
+                            </span>
+                        </div>
+
+
+                        <div class="slds-var-p-vertical_medium">
+                            <span class="label">Category:</span>
+                            <span>
+                                <ui:outputText value="{!v.course.Category__c}" />
+                            </span>
+                        </div>
+
+                        <div class="slds-var-p-vertical_mediumdium">
+                            <span class="label">Completation(%):</span>
+                            <span>
+                                <ui:outputText value="{!v.course.Completion__c}" />%
+                            </span>
+                        </div>
+
+                        <div class="slds-var-p-vertical_medium">
+                            <span class="label">Course Position</span>
+                            <span>
+                                <ui:outputText value="{!v.course.CoursePosition__r.Name}" />
+                            </span>
+                        </div>
+
+
+                        <div class="slds-var-p-vertical_medium">
+                            <span class="label">Description:</span>
+                            <span>
+                                <ui:outputRichText class="slds-text-longform" value="{!v.course.Description__c}" />
+                            </span>
+                        </div>
+
+                        <div class="slds-var-p-vertical_medium">
+                            <span class="label">Course Image Link:</span>
+                            <span><b>
+                                    <lightning:formattedUrl value="{!v.course.Picture__c}" label="Course Img Link"
+                                        target="_blank" class="imageview" />
+                                </b></span>
+                        </div>
+                    </div>
+                </lightning:layoutItem>
+
+
+                <lightning:layoutItem flexibility="grow" size="6" mediumDeviceSize="6" largeDeviceSize="6">
+                    <br />
+                    <div class="imageview" style="{!'background-image:url(\'' + v.course.Picture__c + '\')'}" />
+
+
+                </lightning:layoutItem>
+
+            </lightning:layout>
+        </p>
+
+    </lightning:card>
+</aura:component>

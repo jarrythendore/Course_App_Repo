@@ -1,0 +1,28 @@
+<aura:component controller="CourseSearchResults">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="courseLevelId" type="String" default="" />
+    <aura:attribute name="coursePositionId" type="String" default="" />
+    <aura:attribute name="courses" type="Course__c[]" />
+    <aura:attribute name="selectedCourseId" type="String" />
+
+    <aura:method name="search" description="">
+        <aura:attribute name="courseLevelId" type="String" />
+        <aura:attribute name="coursePositionId" type="String" />
+    </aura:method>
+
+
+    <div class='slds-var-m-around_x-large'>
+        <lightning:layout horizontalAlign="center" verticalAlign="center" multipleRows="true">
+            <aura:if isTrue="{!v.courses.length>0}">
+                <aura:iteration items="{!v.courses}" var="course">
+                    <lightning:layoutItem flexibility="grow" class="slds-m-around_large">
+                        <!-- <div>"{!course.Id}"</div> -->
+                        <c:CourseTile course="{!course}" selected="{!v.selectedCourseId == course.Id ? true : false}" />
+                    </lightning:layoutItem>
+                </aura:iteration>
+
+
+            </aura:if>
+        </lightning:layout>
+    </div>
+</aura:component>

@@ -1,0 +1,23 @@
+<aura:component
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId">
+    <aura:attribute name="course" type="Course__c" />
+
+    <aura:attribute name="id" type="Id" />
+    <aura:attribute name="recordError" type="String" />
+
+    <aura:handler event="c:CourseSelected" action="{!c.onCourseSelected}" />
+
+
+    <force:recordData aura:id="service" recordId="{!v.id}" targetFields="{!v.course}" fields="Id,
+				Name,
+				Description__c" targetError="{!v.recordError}" mode="VIEW" />
+
+
+    <aura:if isTrue="{! !empty(v.course)}">
+        <lightning:tabset selectedTabId="taboneId" aura:id="courseDetailsTabs">
+            <lightning:tab label="Course Details" id="taboneId">
+                <c:CourseDetail course="{!v.course}" />
+            </lightning:tab>
+        </lightning:tabset>
+    </aura:if>
+</aura:component>

@@ -1,0 +1,19 @@
+<aura:component>
+	<aura:attribute name="course" type="Course__c" />
+	<aura:attribute name="selected" type="Boolean" default="false" />
+
+	<aura:registerEvent name="CourseSelected" type="c:CourseSelected" />
+
+	<lightning:button aura:id="{!v.course.Id}" name="{!v.course.Name}" class="{!v.selected ? 'tile selected' : 'tile'}"
+		onclick="{!c.onCourseClick}">
+		<div class="innertile">
+			<div class="lower-third">
+				<h1 class="slds-truncate"><b>{!v.course.Name}</b></h1>
+				<p><img src="{!v.course.Picture__c}" /></p>
+				<p>{!v.course.Description__c}</p>
+				<!-- we can add any course information here. -->
+			</div>
+		</div>
+	</lightning:button>
+
+</aura:component>

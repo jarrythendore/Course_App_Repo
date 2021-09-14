@@ -1,0 +1,77 @@
+<aura:component controller="CourseCreateController"
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId">
+    <aura:attribute name="newCourse" type="Object" />
+    <aura:attribute name="simpleNewCourse" type="Object" />
+    <aura:attribute name="newCourseError" type="String" />
+    <aura:attribute name="showCourseForm" type="Boolean" default="false" />
+
+    <aura:attribute name="fieldMap" type="Map" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <force:recordData aura:id="courseRecordCreator" fields="Name,	Category__c,Completion__c,Description__c,Contact__c"
+        targetRecord="{!v.newCourse}" targetFields="{!v.simpleNewCourse}" targetError="{!v.newCourseError}" />
+
+    <lightning:card title="New Course">
+        <lightning:layout horizontalAlign="" verticalAlign="end">
+            <lightning:layoutItem padding="around-small">
+                <div class="slds-button-group" role="group">
+                    <aura:if isTrue="{!!v.showCourseForm}">
+                        <lightning:button class="slds-button" variant="neutral" label="New"
+                            onclick="{!c.handleNewClick}" />
+                    </aura:if>
+                </div>
+            </lightning:layoutItem>
+        </lightning:layout>
+
+        <aura:if isTrue="{!v.showCourseForm}">
+            <!-- Display the new course form -->
+            <lightning:card iconName="action:new_contact" title="">
+                <div class="slds-p-horizontal--small">
+                    <lightning:input aura:id="courseField" label="Name" value="{!v.simpleNewCourse.Name}" />
+                    <!-- <lightning:input aura:id="courseField" label="Course Id" value="{!v.simpleNewCourse.Contact__c}"/> -->
+                    <c:lookupField objectAPIName="User" label="User" returnFields="['Name','username']"
+                        queryFields="['Name,username']" selectedId="{!v.simpleNewCourse.User__c}" />
+
+
+                    <c:lookupField objectAPIName="Contact" label="Contact" returnFields="['Name']"
+                        queryFields="['Name']" selectedId="{!v.simpleNewCourse.Contact__c}" />
+
+
+                    <lightning:input aura:id="courseField" label="Completion" value="{!v.simpleNewCourse.Completion__c}"
+                        pattern="[0-9]*" />
+                    <!-- <lightning:input aura:id="courseField" label="Category" value="{!v.simpleNewCourse.Category__c}" /> -->
+                    <lightning:select aura:id="categoryid" value="{!v.simpleNewCourse.Category__c}"
+                        onchange="{!c.handleOnChange}" name="categoryPicklist" label="category" required="true">
+                        <option value="">--None--</option>
+                        <aura:iteration items="{!v.fieldMap}" var="i" indexVar="key">
+                            <option text="{!i.value}" value="{!i.key}"
+                                selected="{!i.key==v.simpleNewCourse.Category__c}" />
+                        </aura:iteration>
+                    </lightning:select>
+
+
+                    <c:lookupField objectAPIName="CourseLevel__c" label="Course Level" returnFields="['Name']"
+                        queryFields="['Name']" selectedId="{!v.simpleNewCourse.CourseLevel__c}" />
+
+                    <c:lookupField objectAPIName="CoursePosition__c" label="Course Position" returnFields="['Name']"
+                        queryFields="['Name']" selectedId="{!v.simpleNewCourse.CoursePosition__c}" />
+
+                    <lightning:input value="{!v.simpleNewCourse.Picture__c}" label="Image Link" />
+
+                    <lightning:textarea name="describe" label="Course Describe" placeholder="describe..."
+                        value="{!v.simpleNewCourse.Description__c}" />
+
+                    <br />
+                    <lightning:button label="Save Course" variant="brand" onclick="{!c.handleSaveCourse}" />
+                </div>
+            </lightning:card>
+
+            <!-- Display Lightning Data Service errors -->
+            <aura:if isTrue="{!not(empty(v.newCourseError))}">
+                <div class="recordError">
+                    {!v.newCourseError}</div>
+            </aura:if>
+        </aura:if>
+    </lightning:card>
+</aura:component>

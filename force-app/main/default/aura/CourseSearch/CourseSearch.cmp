@@ -1,0 +1,12 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes">
+
+    <aura:handler name="formsubmit" event="c:FormSubmit" action="{!c.onFormSubmit}" phase="capture" />
+
+    <lightning:card title="Find a Course">
+        <c:CourseSearchForm />
+    </lightning:card>
+
+    <lightning:card title="Course Search Results">
+        <c:CourseSearchResults aura:id="CSRcmp" />
+    </lightning:card>
+</aura:component>

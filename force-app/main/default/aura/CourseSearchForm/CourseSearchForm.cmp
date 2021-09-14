@@ -1,0 +1,40 @@
+<aura:component controller="CourseSearchFormController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="courselevellist" type="CourseLevel__c[]" />
+    <aura:attribute name="coursepositionlist" type="CoursePosition__c[]" />
+
+    <aura:attribute name="selectedCourseLevel" type="CourseLevel__c" />
+    <aura:attribute name="selectedCoursePosition" type="CoursePosition__c" />
+
+    <aura:attribute name="showCreateNewBtn" type="Boolean" default="false" />
+    <aura:registerEvent name="formsubmit" type="c:FormSubmit" />
+
+    <lightning:layout horizontalAlign="center" verticalAlign="end">
+        <lightning:layoutItem padding="around-small">
+            <lightning:select class="single" aura:id="searchCourseLevelId" label="" value="{!v.selectedCourseLevel}">
+                <option text="Select all level" value="" />
+                <aura:iteration items="{!v.courselevellist}" var="courselevel">
+                    <option text="{!courselevel.Name}" value="{!courselevel.Id}" />
+                </aura:iteration>
+            </lightning:select>
+        </lightning:layoutItem>
+
+        <lightning:layoutItem padding="around-small">
+            <lightning:select class="single" aura:id="searchCoursePositionId" label=""
+                value="{!v.selectedCoursePosition}">
+                <option text="Select all Position" value="" />
+                <aura:iteration items="{!v.coursepositionlist}" var="courseposition">
+                    <option text="{!courseposition.Name}" value="{!courseposition.Id}" />
+                </aura:iteration>
+                
+            </lightning:select>
+        </lightning:layoutItem>
+
+        <lightning:layoutItem padding="around-small">
+            <div class="slds-button-group" role="group">
+                <lightning:button class="slds-button" variant="brand" label="Search" onclick="{!c.onFormSubmit}" />
+            </div>
+        </lightning:layoutItem>
+
+    </lightning:layout>
+</aura:component>
